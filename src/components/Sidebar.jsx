@@ -12,7 +12,9 @@ const Sidebar = () => {
 
   React.useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("http://localhost:5000/api/v1/categories");
+      const res = await axios.get(
+        "https://trending-trends.herokuapp.com/api/v1/categories"
+      );
       setCats(res.data);
     };
     getCats();

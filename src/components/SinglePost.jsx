@@ -21,7 +21,9 @@ const SinglePost = () => {
 
   React.useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(`http://localhost:5000/api/v1/posts/${path}`);
+      const res = await axios.get(
+        `https://trending-trends.herokuapp.com/api/v1/posts/${path}`
+      );
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -29,13 +31,16 @@ const SinglePost = () => {
     getPost();
   }, [path]);
 
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://trending-trends.herokuapp.com/images/";
 
   const handleClick = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/v1/posts/${path}`, {
-        data: { username: user.username },
-      });
+      await axios.delete(
+        `https://trending-trends.herokuapp.com/api/v1/posts/${path}`,
+        {
+          data: { username: user.username },
+        }
+      );
       window.location.replace("/");
     } catch (error) {
       console.log(error);
@@ -44,11 +49,14 @@ const SinglePost = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/v1/posts/${path}`, {
-        username: user.username,
-        title,
-        desc,
-      });
+      await axios.put(
+        `https://trending-trends.herokuapp.com/api/v1/posts/${path}`,
+        {
+          username: user.username,
+          title,
+          desc,
+        }
+      );
       //window.location.reload();
       setUpdateMode(false);
     } catch (error) {

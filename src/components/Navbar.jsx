@@ -17,7 +17,7 @@ const NavBar = () => {
     localStorage.setItem("user", JSON.stringify(null));
   };
 
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://trending-trends.herokuapp.com/images/";
 
   return (
     <div className="z-10 flex items-center w-full h-20  px-4 text-[#444] font-[900] bg-white fixed">

@@ -36,7 +36,7 @@ const Write = () => {
     }
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/posts",
+        "https://trending-trends.herokuapp.com/api/v1/posts",
         newPost
       );
       window.location.replace("/post/" + res.data._id);

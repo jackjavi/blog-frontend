@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://trending-trends.herokuapp.com/images/";
   return (
     <div className="mt-4 border shadow p-4 w-[385px] rounded">
       <div>

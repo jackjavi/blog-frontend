@@ -3,7 +3,7 @@ import Post from "./Post";
 
 const Posts = ({ posts }) => {
   return (
-    <div className="flex-[9] flex flex-wrap gap-4">
+    <div className="flex justify-center flex-wrap gap-4">
       {posts.map((p) => {
         return <Post post={p} />;
       })}

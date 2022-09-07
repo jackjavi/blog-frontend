@@ -26,7 +26,7 @@ const NavBar = () => {
         <InstagramIcon fontSize="20px" className="cursor-pointer" />
         <TwitterIcon fontSize="20px" className="cursor-pointer" />
       </div>
-      <div className="flex-[6] flex items-center justify-center">
+      <div className="hidden flex-[6] md:flex items-center justify-center">
         <ul className="flex items-center gap-4 text-[18px] font-light ">
           <Link to="/">
             <li className="cursor-pointer">HOME</li>

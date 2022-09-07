@@ -3,15 +3,15 @@ import Hero from "../Assets/hero.jpg";
 
 const Header = () => {
   return (
-    <div className="pt-32 flex flex-col items-center justify-center">
-      <p className="font-varela text-[#444] absolute top-[24%] text-[20px]">
+    <div className=" pt-24 md:pt-32 flex flex-col items-center justify-center h-full">
+      <p className="font-varela text-[#9e1b1b] md:absolute top-[24%] text-[12px] md:text-[20px]">
         Sports News
       </p>
-      <p className="font-lora text-[#444] absolute top-[25%] text-[100px]">
+      <p className="font-lora text-[#bcbe0c] md:absolute top-[25%] text-[45px] md:text-[100px]">
         Blog
       </p>
       <img
-        className="w-full h-[450px] object-cover mt-24 "
+        className="w-full h-[450px] object-cover mt-24 hidden md:block"
         src={Hero}
         alt="hero"
       />

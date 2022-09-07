@@ -21,8 +21,8 @@ const Home = () => {
     fetchPosts();
   }, [search]);
   return (
-    <>
-      <div>
+    <div className="pb-8">
+      <div className="">
         <NavBar />
         <Header />
       </div>
@@ -30,7 +30,7 @@ const Home = () => {
         <Posts posts={posts} />
         <Sidebar />
       </div>
-    </>
+    </div>
   );
 };
 

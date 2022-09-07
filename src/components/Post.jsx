@@ -1,14 +1,19 @@
 import React from "react";
+import "../index.css";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
+  const styles = {
+    descEllipsis: {},
+  };
+
   const PF = "https://trending-trends.herokuapp.com/images/";
   return (
-    <div className="mt-4 border shadow p-4 w-[385px] rounded">
+    <div className="mt-4 border  shadow p-4 w-[100%] md:w-[385px] rounded">
       <div>
         {post.photo && (
           <img
-            className="rounded-md h-[285px] object-cover w-[100%]"
+            className="rounded-md h-[150px] md:h-[285px] object-cover w-[100%]"
             src={PF + post.photo}
             alt="postpoto"
           />
@@ -20,10 +25,7 @@ const Post = ({ post }) => {
           </h4>
         </Link>
 
-        <div
-          className="flex items-center justify-between
-        "
-        >
+        <div className="flex items-center justify-between w-full">
           {post.categories.map((c) => {
             return (
               <p className="mt-2 text-[#999] font-lora italic text-[14px]">
@@ -37,7 +39,10 @@ const Post = ({ post }) => {
           </p>
         </div>
 
-        <p className="mt-2 font-valera text-[14px] leading-6 text-[#444]">
+        <p
+          style={styles.descEllipsis}
+          className="descEllipsis mt-2 overflow-hidden font-valera text-[14px] leading-6 text-[#444]"
+        >
           {post.desc}
         </p>
       </div>

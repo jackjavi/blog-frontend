@@ -32,7 +32,7 @@ const Login = () => {
         style={{
           backgroundImage: `url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500")`,
         }}
-        className="pt-24 h-screen flex flex-col justify-center items-center bg-no-repeat bg-cover"
+        className="pt-24  h-full flex flex-col justify-center items-center bg-no-repeat bg-cover"
       >
         <p className="text-[50px] font-lora">Login</p>
         <form onSubmit={handleSubmit}>

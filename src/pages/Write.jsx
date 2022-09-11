@@ -31,7 +31,7 @@ const Write = () => {
       // newPost.photo = filename;
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/v1/upload",
+          "https://trending-trends.herokuapp.com/api/v1/upload",
           data
         );
 
@@ -42,7 +42,7 @@ const Write = () => {
     }
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/posts",
+        "https://trending-trends.herokuapp.com/api/v1/posts",
         newPost
       );
       console.log(res.data);
@@ -54,7 +54,7 @@ const Write = () => {
           try {
             if (res.data._id) {
               const resp = await axios.put(
-                `http://localhost:5000/api/v1/posts/${res.data._id}`,
+                `https://trending-trends.herokuapp.com/api/v1/posts/${res.data._id}`,
                 {
                   username: user.username,
                   title,

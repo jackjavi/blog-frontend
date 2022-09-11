@@ -63,7 +63,7 @@ const Sidebar = () => {
       </div>
       <div className="px-8 py-4 border shadow mt-4">
         <h3 className="font-semibold leading-5 text-[12px] text-[#222] ">
-          FOLLOW SPORTING NEWS
+          FOLLOW CURRENT NEWS
         </h3>
         <div className="flex justify-between mt-1">
           <span>

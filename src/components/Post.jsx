@@ -9,7 +9,7 @@ const Post = ({ post }) => {
     console.log(post);
   };
   return (
-    <div className="mt-4 border  shadow p-4 w-[100%] md:w-[385px] rounded">
+    <div className="mt-4 border  shadow p-4 w-[100%]  md:max-w-[500px] rounded">
       <div>
         {post.photo && (
           <img

@@ -12,7 +12,7 @@ const Write = () => {
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
     setUser(user);
-  }, [user]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,23 +27,71 @@ const Write = () => {
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
-      newPost.photo = filename;
+      data.append("username", user.username);
+      // newPost.photo = filename;
       try {
-        await axios.post("/upload", data);
+        const res = await axios.post(
+          "http://localhost:5000/api/v1/upload",
+          data
+        );
+
+        localStorage.setItem("cloudImg", JSON.stringify(res.data));
       } catch (err) {
-        console.log(err);
+        console.log("error");
       }
     }
     try {
       const res = await axios.post(
-        "https://trending-trends.herokuapp.com/api/v1/posts",
+        "http://localhost:5000/api/v1/posts",
         newPost
       );
-      window.location.replace("/post/" + res.data._id);
+      console.log(res.data);
+
+      if (res.data) {
+        const putPost = async () => {
+          const cloud_photo = JSON.parse(localStorage.getItem("cloudImg"));
+
+          try {
+            if (res.data._id) {
+              const resp = await axios.put(
+                `http://localhost:5000/api/v1/posts/${res.data._id}`,
+                {
+                  username: user.username,
+                  title,
+                  desc,
+                  photo: cloud_photo,
+                }
+              );
+              if (resp) {
+                console.log("well");
+              }
+            }
+          } catch (error) {
+            if (error.response) {
+              // Request made and server responded
+              console.log(error.response.data);
+              console.log(error.response.status);
+              console.log(error.response.headers);
+            } else if (error.request) {
+              // The request was made but no response was received
+              console.log(error.request);
+            } else {
+              // Something happened in setting up the request that triggered an Error
+              console.log("Error", error.message);
+            }
+          }
+        };
+        putPost();
+        setTimeout(() => {
+          console.log("Hello, World!");
+          window.location.replace("/post/" + res.data._id);
+        }, 3000);
+      }
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <div className="h-screen w-full">
       <NavBar />

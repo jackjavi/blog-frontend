@@ -13,7 +13,7 @@ function App() {
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
     setUser(user);
-  }, [user]);
+  }, []);
 
   return (
     <div className="">

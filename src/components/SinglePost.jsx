@@ -9,39 +9,46 @@ const SinglePost = () => {
   const path = location.pathname.split("/")[2];
   const [post, setPost] = React.useState({});
   const [user, setUser] = React.useState(null);
-
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [updateMode, setUpdateMode] = React.useState(false);
+  const [postId, setPostId] = React.useState(null);
 
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
     setUser(user);
-  }, [user]);
+  }, []);
+
+  React.useEffect(() => {
+    const postId = JSON.parse(localStorage.getItem("post"))._id;
+    setPostId(postId);
+  }, [postId]);
 
   React.useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(
-        `https://trending-trends.herokuapp.com/api/v1/posts/${path}`
-      );
-      setPost(res.data);
-      setTitle(res.data.title);
-      setDesc(res.data.desc);
+      if (postId) {
+        const res = await axios.get(
+          `http://localhost:5000/api/v1/posts/${postId}`
+        );
+        setPost(res.data);
+        setTitle(res.data.title);
+        setDesc(res.data.desc);
+      }
     };
-    getPost();
-  }, [path]);
 
-  const PF = "https://trending-trends.herokuapp.com/images/";
+    getPost();
+  }, [postId]);
+
+  //const PF = "http://localhost:5000/api/v1/images/";
 
   const handleClick = async () => {
     try {
-      await axios.delete(
-        `https://trending-trends.herokuapp.com/api/v1/posts/${path}`,
-        {
+      if (post._id) {
+        await axios.delete(`http://localhost:5000/api/v1/posts/${path}`, {
           data: { username: user.username },
-        }
-      );
-      window.location.replace("/");
+        });
+        window.location.replace("/");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -49,14 +56,14 @@ const SinglePost = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(
-        `https://trending-trends.herokuapp.com/api/v1/posts/${path}`,
-        {
-          username: user.username,
+      if (post._id) {
+        await axios.put(`http://localhost:5000/api/v1/posts/${post._id}`, {
+          // username: user.username,
           title,
           desc,
-        }
-      );
+        });
+      }
+
       //window.location.reload();
       setUpdateMode(false);
     } catch (error) {
@@ -70,7 +77,7 @@ const SinglePost = () => {
         {post.photo && (
           <img
             className="rounded-md h-[300px] w-full object-cover"
-            src={PF + post.photo}
+            src={post.photo}
             alt=""
           />
         )}

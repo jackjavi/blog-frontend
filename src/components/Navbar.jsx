@@ -11,13 +11,13 @@ const NavBar = () => {
 
   React.useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
-  }, [user]);
+  }, []);
 
   const handleLogout = () => {
     localStorage.setItem("user", JSON.stringify(null));
   };
 
-  const PF = "https://trending-trends.herokuapp.com/images/";
+  //const PF = "https://trending-trends.herokuapp.com/images/";
 
   return (
     <div className="z-10 flex items-center w-full h-20  px-4 text-[#444] font-[900] bg-white fixed">
@@ -53,7 +53,7 @@ const NavBar = () => {
             {user.profilePic ? (
               <img
                 className=" w-[40px] h-[40px] cursor-pointer object-contain rounded-full bg-white"
-                src={PF + user.profilePic}
+                src={user.profilePic}
                 alt=""
               />
             ) : (

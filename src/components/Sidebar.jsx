@@ -50,7 +50,7 @@ const Sidebar = () => {
         <ul className="pt-2 grid grid-cols-2 gap-4 w-full text-[12px] font-lora font-medium">
           {cats.map((c) => {
             return (
-              <Link to={`/?cat=${c.name}`}>
+              <Link key={c.name} to={`/?cat=${c.name}`}>
                 <li
                   key={c.name}
                   className="ml-[25%] hover:text-[lightcoral] cursor-pointer"

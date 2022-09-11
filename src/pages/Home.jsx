@@ -21,7 +21,7 @@ const Home = () => {
     fetchPosts();
   }, [search]);
   return (
-    <div className="pb-8 h-full w-full">
+    <div className="w-full ">
       <div className="">
         <NavBar />
         <Header />
@@ -30,9 +30,8 @@ const Home = () => {
       <div className="flex w-[90vw] m-auto gap-4 mt-6">
         <Posts posts={posts} />
       </div>
-      <div>
-        <Footer />
-      </div>
+
+      <Footer />
     </div>
   );
 };

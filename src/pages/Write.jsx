@@ -2,6 +2,7 @@ import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import NavBar from "../components/Navbar";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 const Write = () => {
   const [title, setTitle] = React.useState("");
@@ -93,57 +94,60 @@ const Write = () => {
   };
 
   return (
-    <div className="h-screen w-full">
-      <NavBar />
-      <form onSubmit={handleSubmit} className="pt-24 w-[70vw] m-auto">
-        {file && (
-          <img
-            src={URL.createObjectURL(file)}
-            alt=""
-            className="h-[250px] object-cover rounded-md w-full"
-          />
-        )}
-        <div className="flex items-center">
-          <label htmlFor="write-file">
-            <AddIcon
-              fontSize="medium"
-              sx={{ color: "gray" }}
-              className=" border-2 rounded-full cursor-pointer"
+    <>
+      <div className="h-screen w-full">
+        <NavBar />
+        <form onSubmit={handleSubmit} className="pt-24 w-[70vw] m-auto">
+          {file && (
+            <img
+              src={URL.createObjectURL(file)}
+              alt=""
+              className="h-[250px] object-cover rounded-md w-full"
             />
-          </label>
-          <input
-            type="file"
-            name="photo"
-            onChange={(e) => setFile(e.target.files[0])}
-            id="write-file"
-            className="hidden"
-          />
-          <input
-            type="text"
-            name="title"
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Title"
-            autoFocus={true}
-            className="outline-none text-[20px] border-0 p-[20px] w-[70vw]"
-          />
-        </div>
-        <div>
-          <textarea
-            className="text-[20px] border-0 outline-none w-full h-[30vh] "
-            type="text"
-            name="desc"
-            onChange={(e) => setDesc(e.target.value)}
-            placeholder="Write your story..."
-          ></textarea>
-          <button
-            type="submit"
-            className="bg-teal-700 cursor-pointer absolute right-[8vw] text-white text-[14px] font-josefin p-[6px] border-0 rounded-md"
-          >
-            Publish
-          </button>
-        </div>
-      </form>
-    </div>
+          )}
+          <div className="flex items-center">
+            <label htmlFor="write-file">
+              <AddIcon
+                fontSize="medium"
+                sx={{ color: "gray" }}
+                className=" border-2 rounded-full cursor-pointer"
+              />
+            </label>
+            <input
+              type="file"
+              name="photo"
+              onChange={(e) => setFile(e.target.files[0])}
+              id="write-file"
+              className="hidden"
+            />
+            <input
+              type="text"
+              name="title"
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Title"
+              autoFocus={true}
+              className="outline-none text-[20px] border-0 p-[20px] w-[70vw]"
+            />
+          </div>
+          <div>
+            <textarea
+              className="text-[20px] border-0 outline-none w-full h-[30vh] "
+              type="text"
+              name="desc"
+              onChange={(e) => setDesc(e.target.value)}
+              placeholder="Write your story..."
+            ></textarea>
+            <button
+              type="submit"
+              className="bg-teal-700 cursor-pointer absolute right-[8vw] text-white text-[14px] font-josefin p-[6px] border-0 rounded-md"
+            >
+              Publish
+            </button>
+          </div>
+        </form>
+      </div>
+      <Footer />
+    </>
   );
 };
 

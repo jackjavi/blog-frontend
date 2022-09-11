@@ -1,17 +1,19 @@
 import React from "react";
 import NavBar from "../components/Navbar";
-import Sidebar from "../components/Sidebar";
 import SinglePost from "../components/SinglePost";
+import Footer from "../components/Footer";
 
 const Single = () => {
   return (
-    <div>
-      <NavBar />
-      <div className="pt-24 flex w-[90vw] m-auto gap-4">
-        <SinglePost />
-        <Sidebar />
+    <>
+      <div className="h-screen w-full">
+        <NavBar />
+        <div className="pt-24 flex w-[90vw] m-auto gap-4">
+          <SinglePost />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

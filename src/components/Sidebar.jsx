@@ -21,7 +21,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="hidden  flex-col md:flex-[3] max-w-[25vw]">
+    <div className="flex bg-gray-200 w-full flex-col md:flex-row md:justify-around md:items-center justify-center">
       <div className="border shadow p-4 mt-4 text-[12px] font-lora font-medium">
         <h3 className="font-semibold text-[12px] leading-5 text-[#222] font-valera ">
           TRENDING NEWS

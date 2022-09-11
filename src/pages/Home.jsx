@@ -1,10 +1,10 @@
 import React from "react";
 import NavBar from "../components/Navbar";
 import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
 import Posts from "../components/Posts";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [posts, setPosts] = React.useState([]);
@@ -21,14 +21,17 @@ const Home = () => {
     fetchPosts();
   }, [search]);
   return (
-    <div className="pb-8">
+    <div className="pb-8 h-full w-full">
       <div className="">
         <NavBar />
         <Header />
       </div>
+
       <div className="flex w-[90vw] m-auto gap-4 mt-6">
         <Posts posts={posts} />
-        <Sidebar />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

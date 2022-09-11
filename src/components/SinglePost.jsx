@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
+import "../index.css";
 
 const SinglePost = () => {
   const location = useLocation();
@@ -78,7 +79,7 @@ const SinglePost = () => {
   };
 
   return (
-    <div className="flex-[9] pt-4 h-screen">
+    <div className="scrollbar scrollbar-hide flex-[9] pt-4 h-screen overflow-auto">
       <div>
         {post.photo && (
           <img

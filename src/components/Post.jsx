@@ -27,7 +27,7 @@ const Post = ({ post }) => {
           </button>
         </Link>
 
-        <div className="flex items-center justify-between w-full">
+        <div className="flex  items-center justify-between w-full">
           {post.categories.map((c) => {
             return (
               <p className="mt-2 text-[#999] font-lora italic text-[14px]">

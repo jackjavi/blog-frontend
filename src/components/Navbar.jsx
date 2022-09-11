@@ -45,9 +45,6 @@ const NavBar = () => {
             <li className="cursor-pointer">HOME</li>
           </Link>
 
-          <Link to="/contact">
-            <li className="cursor-pointer">CONTACT</li>
-          </Link>
           <Link to="/write">
             <li className="cursor-pointer">WRITE</li>
           </Link>
@@ -100,11 +97,11 @@ const NavBar = () => {
             <li className="cursor-pointer">HOME</li>
           </Link>
 
-          <Link to="/contact">
-            <li className="cursor-pointer">CONTACT</li>
-          </Link>
           <Link to="/write">
             <li className="cursor-pointer">WRITE</li>
+          </Link>
+          <Link to="/settings">
+            <li className="cursor-pointer">SETTINGS</li>
           </Link>
           <Link to="/login">
             <li onClick={handleLogout} className="cursor-pointer">

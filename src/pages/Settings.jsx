@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import NavBar from "../components/Navbar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
 
 const Settings = () => {
   const [file, setFile] = React.useState(null);
@@ -47,65 +47,67 @@ const Settings = () => {
 
   return (
     <div className="h-screen">
-      <NavBar />
-      <div className="flex pt-24 gap-4 w-[80vw] m-auto">
-        <form onSubmit={handleSubmit} className=" flex-[9]">
-          <p className="flex items-center justify-between">
-            <span className="text-[30px] mb-[20px] text-[lightcoral] cursor-pointer">
-              Update Your Account
-            </span>
-            <span className="text-[red] text-[12px] cursor-pointer">
-              Delete Your Account
-            </span>
-          </p>
-          <div className="flex items-center my-[10px]">
-            <img
-              src={file && URL.createObjectURL(file)}
-              alt=""
-              className="object-cover rounded-md h-[70px] w-[70px]"
-            />
-            <div className="w-[25px] h-[25px] text-[lightcoral] ml-[10px]">
-              <label htmlFor="profile">
-                <AccountCircleIcon />
-              </label>
-              <input
-                type="file"
-                onChange={(e) => setFile(e.target.files[0])}
-                id="profile"
-                className="hidden"
+      <div className="h-screen mb-40">
+        <NavBar />
+        <div className="flex pt-24 gap-4 w-[80vw] m-auto">
+          <form onSubmit={handleSubmit} className=" flex-[9]">
+            <p className="flex items-center justify-between">
+              <span className="text-[30px] mb-[20px] text-[lightcoral] cursor-pointer">
+                Update Your Account
+              </span>
+              <span className="text-[red] text-[12px] cursor-pointer">
+                Delete Your Account
+              </span>
+            </p>
+            <div className="flex items-center my-[10px]">
+              <img
+                src={file && URL.createObjectURL(file)}
+                alt=""
+                className="object-cover rounded-md h-[70px] w-[70px]"
               />
+              <div className="w-[25px] h-[25px] text-[lightcoral] ml-[10px]">
+                <label htmlFor="profile">
+                  <AccountCircleIcon />
+                </label>
+                <input
+                  type="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                  id="profile"
+                  className="hidden"
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="flex flex-col">
-            <label className="mt-[20px]">username</label>
-            <input
-              type="text"
-              onChange={(e) => setUsername(e.target.value)}
-              className="outline-none mt-[10px]"
-            />
-            <label className="mt-[20px]">email</label>
-            <input
-              type="text"
-              onChange={(e) => setEmail(e.target.value)}
-              className="outline-none mt-[10px]"
-            />
-            <label className="mt-[20px]">password</label>
-            <input
-              type="password "
-              onChange={(e) => setPassword(e.target.value)}
-              className="outline-none mt-[10px]"
-            />
-            <button
-              type="submit"
-              className="w-[150px] self-center rounded-md p-1 mt-8 text-white bg-[teal]"
-            >
-              update
-            </button>
-          </div>
-        </form>
-        <Sidebar />
+            <div className="flex flex-col">
+              <label className="mt-[20px]">username</label>
+              <input
+                type="text"
+                onChange={(e) => setUsername(e.target.value)}
+                className="outline-none mt-[10px]"
+              />
+              <label className="mt-[20px]">email</label>
+              <input
+                type="text"
+                onChange={(e) => setEmail(e.target.value)}
+                className="outline-none mt-[10px]"
+              />
+              <label className="mt-[20px]">password</label>
+              <input
+                type="password "
+                onChange={(e) => setPassword(e.target.value)}
+                className="outline-none mt-[10px]"
+              />
+              <button
+                type="submit"
+                className="w-[150px] self-center rounded-md p-1 mt-8 text-white bg-[teal]"
+              >
+                update
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

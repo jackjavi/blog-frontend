@@ -84,7 +84,7 @@ const Write = () => {
         putPost();
         if (res.data) {
           alert("success");
-          window.location.replace("/post/" + res.data._id);
+          window.location.replace("/");
         }
       }
     } catch (err) {

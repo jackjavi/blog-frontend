@@ -4,6 +4,7 @@ import Write from "./pages/Write";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Contact from "./pages/Contact";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
@@ -20,6 +21,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/post/:postId" element={<Single />} />
           <Route path="/write" element={user ? <Write /> : <Register />} />
           <Route

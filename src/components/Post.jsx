@@ -21,7 +21,7 @@ const Post = ({ post }) => {
 
         <Link to={`/post/${post._id}`}>
           <button onClick={handleClick}>
-            <h4 className="mt-2 font-josefin text-[24px] font-bold cursor-pointer ">
+            <h4 className="mt-2 font-josefin text-[24px] font-bold cursor-pointer text-[#bcbe0c]">
               {post.title}
             </h4>
           </button>

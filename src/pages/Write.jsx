@@ -2,14 +2,12 @@ import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import NavBar from "../components/Navbar";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const Write = () => {
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [file, setFile] = React.useState(null);
   const [user, setUser] = React.useState(null);
-  const [singlePost, setSinglePost] = React.useState(null);
 
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -84,9 +82,10 @@ const Write = () => {
           }
         };
         putPost();
-
-        setSinglePost(res.data._id);
-        //window.location.replace("/post/" + res.data._id);
+        if (res.data) {
+          alert("success");
+          window.location.replace("/post/" + res.data._id);
+        }
       }
     } catch (err) {
       console.log(err);
@@ -143,14 +142,6 @@ const Write = () => {
             Publish
           </button>
         </div>
-        <button className="flex flex-col items-center bg-[green] text-white p-2 cursor-pointer rounded-xl">
-          <span>Published successfuly</span>
-          {singlePost && (
-            <Link to={"/post/" + singlePost}>
-              <span>view post</span>
-            </Link>
-          )}
-        </button>
       </form>
     </div>
   );

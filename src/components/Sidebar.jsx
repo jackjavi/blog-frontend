@@ -34,8 +34,7 @@ const Sidebar = () => {
               sx={{ color: "red" }}
             />
             <p className="flex-[11] pl-2 cursor-pointer">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. In natus
-              sequi nostrum corrupti.
+              Supreme court upholds William Ruto's victory...
             </p>
           </li>
         </ul>

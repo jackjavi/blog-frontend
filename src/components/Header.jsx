@@ -4,10 +4,10 @@ import Hero from "../Assets/hero.jpg";
 const Header = () => {
   return (
     <div className=" pt-24 md:pt-32 flex flex-col items-center justify-center h-full">
-      <p className="font-varela text-[#9e1b1b] md:absolute top-[24%] text-[12px] md:text-[20px]">
+      <p className="font-varela text-[#bcbe0c] md:absolute top-[24%] text-[12px] md:text-[20px]">
         Sports News
       </p>
-      <p className="font-lora text-[#bcbe0c] md:absolute top-[25%] text-[45px] md:text-[100px]">
+      <p className="font-lora text-[#9e1b1b] md:absolute top-[25%] text-[45px] md:text-[100px]">
         Blog
       </p>
       <img

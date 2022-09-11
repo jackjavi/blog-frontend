@@ -2,7 +2,6 @@ import React from "react";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-//import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -24,12 +23,24 @@ const NavBar = () => {
   return (
     <div className="z-10 flex items-center w-full h-20  px-4 text-[#444] font-[900] bg-white fixed">
       <div className="flex-[3] flex items-center justify-center gap-3 text-[#444] ">
-        <FacebookOutlinedIcon fontSize="20px" className="cursor-pointer" />
-        <InstagramIcon fontSize="20px" className="cursor-pointer" />
-        <TwitterIcon fontSize="20px" className="cursor-pointer" />
+        <FacebookOutlinedIcon
+          sx={{ color: "#1877f2" }}
+          fontSize="20px"
+          className="cursor-pointer"
+        />
+        <InstagramIcon
+          color="secondary"
+          fontSize="20px"
+          className="cursor-pointer"
+        />
+        <TwitterIcon
+          sx={{ color: "#1da1f2" }}
+          fontSize="20px"
+          className="cursor-pointer"
+        />
       </div>
       <div className=" flex-[6] hidden md:flex items-center justify-center">
-        <ul className="flex items-center gap-4 text-[18px] font-light ">
+        <ul className="flex items-center gap-4 text-[18px] text-[#9e1b1b] font-light ">
           <Link to="/">
             <li className="cursor-pointer">HOME</li>
           </Link>
@@ -59,7 +70,7 @@ const NavBar = () => {
                 alt=""
               />
             ) : (
-              <AccountCircleIcon />
+              <AccountCircleIcon sx={{ color: "#bcbe0c" }} />
             )}
           </Link>
         ) : (

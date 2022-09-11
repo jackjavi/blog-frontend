@@ -2,12 +2,14 @@ import React from "react";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+//import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const NavBar = () => {
   const [user, setUser] = React.useState(null);
+  const [nav, setNav] = React.useState(false);
 
   React.useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
@@ -26,7 +28,7 @@ const NavBar = () => {
         <InstagramIcon fontSize="20px" className="cursor-pointer" />
         <TwitterIcon fontSize="20px" className="cursor-pointer" />
       </div>
-      <div className="hidden flex-[6] md:flex items-center justify-center">
+      <div className=" flex-[6] hidden md:flex items-center justify-center">
         <ul className="flex items-center gap-4 text-[18px] font-light ">
           <Link to="/">
             <li className="cursor-pointer">HOME</li>
@@ -70,9 +72,35 @@ const NavBar = () => {
             </Link>
           </ul>
         )}
-
-        <SearchOutlinedIcon className="text-4 text-[#666] cursor-pointer" />
       </div>
+      <div
+        onClick={() => setNav(!nav)}
+        className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden"
+      >
+        {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
+      </div>
+
+      {nav && (
+        <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+          <Link to="/">
+            <li className="cursor-pointer">HOME</li>
+          </Link>
+          <Link to="/about">
+            <li className="cursor-pointer">ABOUT</li>
+          </Link>
+          <Link to="/contact">
+            <li className="cursor-pointer">CONTACT</li>
+          </Link>
+          <Link to="/write">
+            <li className="cursor-pointer">WRITE</li>
+          </Link>
+          <Link to="/login">
+            <li onClick={handleLogout} className="cursor-pointer">
+              {user && "LOGOUT"}
+            </li>
+          </Link>
+        </ul>
+      )}
     </div>
   );
 };

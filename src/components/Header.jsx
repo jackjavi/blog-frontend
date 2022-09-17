@@ -14,12 +14,12 @@ const Header = () => {
 
   return (
     <div className=" pt-24 md:pt-32 flex flex-col items-center justify-center h-full">
-      <p className="font-signature text-[#bcbe0c] md:absolute top-[24%] text-[12px] md:text-[20px]">
+      <p className="font-signature text-[#bcbe0c] md:absolute top-[20%] text-[38px] md:text-[45px]">
         Trending Trends
       </p>
       <animated.p
         style={styles}
-        className="font-lora tranform hover:scale-125 ease-in-out  transition-all delay-125 text-[#9e1b1b] md:absolute top-[25%] text-[45px] md:text-[100px]"
+        className="font-lora tranform hover:scale-125 ease-in-out  transition-all delay-125 text-[#9e1b1b] md:absolute top-[25%] text-[85px] md:text-[150px]"
       >
         TRENDS
       </animated.p>

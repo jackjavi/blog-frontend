@@ -28,7 +28,7 @@ const Write = () => {
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
-      data.append("username", user.username);
+
       // newPost.photo = filename;
       try {
         const res = await axios.post(

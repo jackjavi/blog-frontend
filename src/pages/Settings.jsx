@@ -14,7 +14,7 @@ const Settings = () => {
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
     setUser(user);
-  }, [user]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,15 +29,23 @@ const Settings = () => {
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
-      updatedUser.profilePic = filename;
+
       try {
-        await axios.post("/upload", data);
+        const res = await axios.post(
+          "https://trending-trends.herokuapp.com/api/v1/upload",
+          data
+        );
+        updatedUser.profilePic = res.data;
+        //localStorage.setItem("cloudProfImg", JSON.stringify(res.data));
       } catch (err) {
-        console.log(err);
+        console.log(err.data);
       }
     }
     try {
-      const res = await axios.put("/users/" + user._id, updatedUser);
+      const res = await axios.put(
+        "https://trending-trends.herokuapp.com/api/v1/users/" + user._id,
+        updatedUser
+      );
       localStorage.setItem("user", JSON.stringify(res.data));
       window.location.replace("/");
     } catch (err) {
@@ -50,7 +58,7 @@ const Settings = () => {
       <div className="h-screen mb-40">
         <NavBar />
         <div className="flex pt-24 gap-4 w-[80vw] m-auto">
-          <form onSubmit={handleSubmit} className=" flex-[9]">
+          <form onSubmit={handleSubmit} className="flex-[9]">
             <p className="flex items-center justify-between">
               <span className="text-[30px] mb-[20px] text-[lightcoral] cursor-pointer">
                 Update Your Account

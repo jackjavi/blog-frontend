@@ -7,7 +7,7 @@ const Header = () => {
       <p className="font-signature text-[#bcbe0c] md:absolute top-[24%] text-[12px] md:text-[20px]">
         Trending Trends
       </p>
-      <p className="font-lora text-[#9e1b1b] md:absolute top-[25%] text-[45px] md:text-[100px]">
+      <p className="font-lora tranform hover:scale-125  transition-all delay-75 text-[#9e1b1b] md:absolute top-[25%] text-[45px] md:text-[100px]">
         TRENDS
       </p>
       <img

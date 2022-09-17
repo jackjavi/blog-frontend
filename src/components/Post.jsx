@@ -13,7 +13,7 @@ const Post = ({ post }) => {
       <div>
         {post.photo && (
           <img
-            className="rounded-md h-[150px] md:h-[285px] object-cover w-[100%]"
+            className="rounded-md h-[150px] md:h-[150px] object-cover w-[100%]"
             src={post.photo}
             alt="postpoto"
           />

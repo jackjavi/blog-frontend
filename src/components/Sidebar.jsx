@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   const [cats, setCats] = React.useState([]);
   const [posts, setPosts] = React.useState(null);
+  //const [singlePost, setSinglePost] = React.useState(null);
 
   React.useEffect(() => {
     const getPosts = async () => {
@@ -33,6 +34,16 @@ const Sidebar = () => {
   }, []);
 
   const handleLink = (id) => {
+    const getPost = async () => {
+      const res = await axios.get(
+        `https://trending-trends.herokuapp.com/api/v1/posts/${id}`
+      );
+      localStorage.setItem("post", JSON.stringify(res.data));
+      console.log(res.data);
+    };
+
+    getPost();
+
     window.location.replace(`/post/${id}`);
   };
 
@@ -40,6 +51,7 @@ const Sidebar = () => {
 
   if (posts) {
     post = posts.map((post) => {
+      //setSinglePost(post);
       return (
         <li
           key={post._id}

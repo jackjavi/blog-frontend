@@ -19,7 +19,7 @@ const Header = () => {
       </p>
       <animated.p
         style={styles}
-        className="font-lora tranform hover:scale-125 ease-in-out  transition-all delay-125 text-[#9e1b1b] md:absolute top-[25%] text-[85px] md:text-[150px]"
+        className="font-lora tranform hover:scale-125 ease-in-out  transition-all delay-125 text-[#9e1b1b] md:absolute top-[25%] text-[85px] sm:text-[50px] md:text-[150px]"
       >
         TRENDS
       </animated.p>

@@ -4,43 +4,75 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import "../index.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [cats, setCats] = React.useState([]);
+  const [posts, setPosts] = React.useState(null);
 
   React.useEffect(() => {
-    const getCats = async () => {
+    const getPosts = async () => {
       const res = await axios.get(
         "https://trending-trends.herokuapp.com/api/v1/categories"
       );
       setCats(res.data);
     };
-    getCats();
+    getPosts();
   }, []);
+
+  React.useEffect(() => {
+    const getPosts = async () => {
+      const res = await axios.get(
+        "https://trending-trends.herokuapp.com/api/v1/posts"
+      );
+      setPosts(res.data);
+    };
+    getPosts();
+  }, []);
+
+  const handleLink = (id) => {
+    window.location.replace(`/post/${id}`);
+  };
+
+  let post;
+
+  if (posts) {
+    post = posts.map((post) => {
+      return (
+        <li
+          key={post._id}
+          className="flex hover:text-[lightcoral] pl-2 cursor-pointer"
+        >
+          <ArrowForwardIosIcon
+            className="flex-[1]  mt-1"
+            fontSize="15px"
+            sx={{ color: "red" }}
+          />
+          <p
+            onClick={() => {
+              handleLink(post._id);
+            }}
+            className="flex-[11] pl-2 cursor-pointer linksEllipsis"
+          >
+            {post.title}
+          </p>
+        </li>
+      );
+    });
+  }
 
   return (
     <div className="flex bg-gray-200 w-full flex-col justify-around md:flex-row md:justify-around md:items-center ">
-      <div className="border shadow p-4 mt-4 text-[12px] font-lora font-medium">
-        <h3 className="font-semibold text-[12px] leading-5 text-[#222] font-valera ">
+      <div className=" border max-h-[65vh] shadow p-4 mt-4 text-[12px] font-lora font-medium">
+        <h3 className="font-semibold text-[12px] mx-auto leading-5 text-[#222] font-valera border-t border-b text-center border-[#a7a4a4] p-1 w-[80%] ">
           TRENDING NEWS
         </h3>
-        <ul className="mt-3">
-          <li className="flex hover:text-[lightcoral]">
-            <ArrowForwardIosIcon
-              className="flex-[1]  mt-1"
-              fontSize="15px"
-              sx={{ color: "red" }}
-            />
-            <p className="flex-[11] pl-2 cursor-pointer">
-              Supreme court upholds William Ruto's victory...
-            </p>
-          </li>
-        </ul>
-        <button className="bg-[#0033a0] text-[10px] mt-4 py-2 w-full text-white">
+        <ul className="mt-3">{post}</ul>
+        {/*<button className="bg-[#0033a0] text-[10px] mt-4 py-2 w-full text-white">
           MORE NEWS
-        </button>
+  </button>*/}
       </div>
       <div className="py-4 flex flex-col items-center justify-center ">
         <h4 className="border-t border-b text-center w-[80%] p-1 border-[#a7a4a4] font-valera text-[12px] text-[#222] font-semibold leading-5">

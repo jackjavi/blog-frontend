@@ -37,8 +37,9 @@ const Sidebar = () => {
     };
 
     getPost();
-
-    window.location.replace(`/post/${id}`);
+    setTimeout(() => {
+      window.location.replace(`/post/${id}`);
+    }, 500);
   };
 
   let post;

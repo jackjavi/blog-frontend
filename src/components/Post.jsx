@@ -8,6 +8,9 @@ const Post = ({ post }) => {
     localStorage.setItem("post", JSON.stringify(post));
     console.log(post);
   };
+  if (post.photo === null) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className="mt-4 border  shadow p-4 w-[100%]  md:w-[30%]  2xl:w-[24%]   rounded">
       <div>

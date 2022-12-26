@@ -29,7 +29,7 @@ const SinglePost = () => {
     const getPost = async () => {
       if (postId) {
         const res = await axios.get(
-          `http://localhost:5000/api/v1/posts/${postId}`
+          `https://trending-trends.onrender.com/api/v1/posts/${postId}`
         );
         setPost(res.data);
         setTitle(res.data.title);
@@ -45,9 +45,12 @@ const SinglePost = () => {
   const handleClick = async () => {
     try {
       if (post._id) {
-        await axios.delete(`http://localhost:5000/api/v1/posts/${path}`, {
-          data: { username: user.username },
-        });
+        await axios.delete(
+          `https://trending-trends.onrender.com/api/v1/posts/${path}`,
+          {
+            data: { username: user.username },
+          }
+        );
         window.location.replace("/");
       }
     } catch (error) {
@@ -58,11 +61,14 @@ const SinglePost = () => {
   const handleUpdate = async () => {
     try {
       if (post._id) {
-        await axios.put(`http://localhost:5000/api/v1/posts/${post._id}`, {
-          // username: user.username,
-          title,
-          desc,
-        });
+        await axios.put(
+          `https://trending-trends.onrender.com/api/v1/posts/${post._id}`,
+          {
+            // username: user.username,
+            title,
+            desc,
+          }
+        );
       }
 
       //window.location.reload();

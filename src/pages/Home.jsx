@@ -16,7 +16,7 @@ const Home = () => {
       const res = await axios.get(
         "https://trending-trends.onrender.com/api/v1/posts/" + search
       );
-      setPosts(res.data);
+      setPosts(res.data.reverse());
     };
     fetchPosts();
   }, [search]);

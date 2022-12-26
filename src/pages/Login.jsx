@@ -12,7 +12,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://trending-trends.herokuapp.com/api/v1/login", {
+      .post("http://localhost:5000/api/v1/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       })

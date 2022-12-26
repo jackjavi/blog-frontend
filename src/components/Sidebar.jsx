@@ -15,9 +15,7 @@ const Sidebar = () => {
 
   React.useEffect(() => {
     const getPosts = async () => {
-      const res = await axios.get(
-        "https://trending-trends.herokuapp.com/api/v1/categories"
-      );
+      const res = await axios.get("http://localhost:5000/api/v1/categories");
       setCats(res.data);
     };
     getPosts();
@@ -25,9 +23,7 @@ const Sidebar = () => {
 
   React.useEffect(() => {
     const getPosts = async () => {
-      const res = await axios.get(
-        "https://trending-trends.herokuapp.com/api/v1/posts"
-      );
+      const res = await axios.get("http://localhost:5000/api/v1/posts");
       setPosts(res.data);
     };
     getPosts();
@@ -35,9 +31,7 @@ const Sidebar = () => {
 
   const handleLink = (id) => {
     const getPost = async () => {
-      const res = await axios.get(
-        `https://trending-trends.herokuapp.com/api/v1/posts/${id}`
-      );
+      const res = await axios.get(`http://localhost:5000/api/v1/posts/${id}`);
       localStorage.setItem("post", JSON.stringify(res.data));
       console.log(res.data);
     };

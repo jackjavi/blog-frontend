@@ -32,7 +32,7 @@ const Settings = () => {
 
       try {
         const res = await axios.post(
-          "https://trending-trends.herokuapp.com/api/v1/upload",
+          "http://localhost:5000/api/v1/upload",
           data
         );
         updatedUser.profilePic = res.data;
@@ -43,7 +43,7 @@ const Settings = () => {
     }
     try {
       const res = await axios.put(
-        "https://trending-trends.herokuapp.com/api/v1/users/" + user._id,
+        "http://localhost:5000/api/v1/users/" + user._id,
         updatedUser
       );
       localStorage.setItem("user", JSON.stringify(res.data));

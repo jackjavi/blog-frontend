@@ -14,7 +14,7 @@ const Home = () => {
   React.useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(
-        "https://trending-trends.herokuapp.com/api/v1/posts/" + search
+        "http://localhost:5000/api/v1/posts/" + search
       );
       setPosts(res.data);
     };

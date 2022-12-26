@@ -24,7 +24,7 @@ const Register = () => {
     setError(false);
     try {
       const res = await axios.post(
-        "https://trending-trends.herokuapp.com/api/v1/register",
+        "http://localhost:5000/api/v1/register",
         formData
       );
       res.data && window.location.replace("/login");

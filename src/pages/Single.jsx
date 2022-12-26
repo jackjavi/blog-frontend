@@ -8,11 +8,11 @@ const Single = () => {
     <>
       <div className="h-screen w-full">
         <NavBar />
-        <div className="pt-24 flex w-[90vw] m-auto gap-4">
+        <div className="pt-24 flex flex-col w-[90vw] m-auto gap-4">
           <SinglePost />
+          <Footer />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

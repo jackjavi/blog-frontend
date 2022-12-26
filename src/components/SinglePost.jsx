@@ -82,8 +82,8 @@ const SinglePost = () => {
     return <p>loading...</p>;
   }
   return (
-    <div className="scrollbar scrollbar-hide flex-[9] pt-4 h-screen overflow-auto">
-      <div>
+    <div className="scrollbar scrollbar-hide flex-[12] flex justify-center pt-4 h-screen overflow-auto">
+      <div className="flex flex-col items-center">
         {post.photo && (
           <img
             className="rounded-md h-[300px] w-full object-cover"
@@ -101,7 +101,7 @@ const SinglePost = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
         ) : (
-          <div className="flex mt-2">
+          <div className="flex w-[100%] mt-2">
             <h4 className=" flex-[9] text-center font-lora text-[20px] font-bold cursor-pointer ">
               {post.title}
             </h4>
@@ -153,7 +153,7 @@ const SinglePost = () => {
             </button>
           </div>
         ) : (
-          <p className=" font-lora text-[16px] leading-8 text-[#666] first-letter:text-[30px] first-letter:ml-[20px] first-letter:font-semibold">
+          <p className=" font-lora text-[16px] w-[60%] leading-8 text-[#666] first-letter:text-[30px] first-letter:ml-[20px] first-letter:font-semibold">
             {post.desc}
           </p>
         )}

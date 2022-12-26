@@ -78,6 +78,9 @@ const SinglePost = () => {
     }
   };
 
+  if (post.photo === null) {
+    return <p>loading...</p>;
+  }
   return (
     <div className="scrollbar scrollbar-hide flex-[9] pt-4 h-screen overflow-auto">
       <div>

@@ -7,10 +7,12 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import "../index.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 const Sidebar = () => {
   const [cats, setCats] = React.useState([]);
   const [posts, setPosts] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
   //const [singlePost, setSinglePost] = React.useState(null);
 
   React.useEffect(() => {
@@ -35,18 +37,27 @@ const Sidebar = () => {
 
   const handleLink = (id) => {
     const getPost = async () => {
-      const res = await axios.get(
-        `https://trending-trends.onrender.com/api/v1/posts/${id}`
-      );
-      localStorage.setItem("post", JSON.stringify(res.data));
-      console.log(res.data);
+      try {
+        const res = await axios.get(
+          `https://trending-trends.onrender.com/api/v1/posts/${id}`
+        );
+        localStorage.setItem("post", JSON.stringify(res.data));
+        //console.log(res.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     getPost();
-    setTimeout(() => {
-      window.location.replace(`/post/${id}`);
-    }, 1000);
+    //setTimeout(() => {
+    window.location.replace(`/post/${id}`);
+    //}, 1000);
   };
+  if (loading) {
+    return <LoadingIndicator />;
+  }
 
   let post;
 

@@ -115,7 +115,7 @@ const SinglePost = () => {
               {post.title}
             </h4>
 
-            {post.username === user?.username && (
+            {!loading && post.username === user?.username && (
               <p className="float-right mr-1">
                 <span className="mr-2">
                   <EditIcon

@@ -5,21 +5,33 @@ import Posts from "../components/Posts";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 const Home = () => {
   const [posts, setPosts] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   const { search } = useLocation();
 
   React.useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(
-        "https://trending-trends.onrender.com/api/v1/posts/" + search
-      );
-      setPosts(res.data.reverse());
+      try {
+        const res = await axios.get(
+          "https://trending-trends.onrender.com/api/v1/posts/" + search
+        );
+        setPosts(res.data.reverse());
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchPosts();
   }, [search]);
+
+  if (loading) {
+    return <LoadingIndicator />;
+  }
   return (
     <div className="w-full ">
       <div className="">

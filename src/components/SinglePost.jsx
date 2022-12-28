@@ -4,6 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import "../index.css";
+import LoadingIndicator from "../components/LoadingIndicator";
 
 const SinglePost = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const SinglePost = () => {
   const [desc, setDesc] = React.useState("");
   const [updateMode, setUpdateMode] = React.useState(false);
   const [postId, setPostId] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -27,18 +29,28 @@ const SinglePost = () => {
 
   React.useEffect(() => {
     const getPost = async () => {
-      if (postId) {
-        const res = await axios.get(
-          `https://trending-trends.onrender.com/api/v1/posts/${postId}`
-        );
-        setPost(res.data);
-        setTitle(res.data.title);
-        setDesc(res.data.desc);
+      try {
+        if (postId) {
+          const res = await axios.get(
+            `https://trending-trends.onrender.com/api/v1/posts/${postId}`
+          );
+          setPost(res.data);
+          setTitle(res.data.title);
+          setDesc(res.data.desc);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
     getPost();
   }, [postId]);
+
+  if (loading) {
+    return <LoadingIndicator />;
+  }
 
   //const PF = "http://localhost:5000/api/v1/images/";
 
@@ -78,9 +90,6 @@ const SinglePost = () => {
     }
   };
 
-  if (post.photo === null) {
-    return <p>loading...</p>;
-  }
   return (
     <div className="scrollbar scrollbar-hide flex-[12] flex justify-center pt-4 h-screen overflow-auto">
       <div className="flex flex-col items-center">
@@ -153,7 +162,7 @@ const SinglePost = () => {
             </button>
           </div>
         ) : (
-          <p className=" font-lora text-[16px] w-[60%] leading-8 text-[#666] first-letter:text-[30px] first-letter:ml-[20px] first-letter:font-semibold">
+          <p className=" font-lora text-[16px] w-[90%] md:w-[60%] leading-8 text-[#666] first-letter:text-[30px] first-letter:ml-[20px] first-letter:font-semibold">
             {post.desc}
           </p>
         )}

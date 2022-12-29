@@ -32,6 +32,7 @@ const Home = () => {
   if (loading) {
     return <LoadingIndicator />;
   }
+
   return (
     <div className="w-full ">
       <div className="">

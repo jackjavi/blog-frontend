@@ -1,10 +1,15 @@
 import React from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Post = ({ posts }) => {
-  const handleClick = () => {
-    localStorage.setItem("post", JSON.stringify(posts));
+  const navigate = useNavigate();
+  const handleClick = (post) => {
+    navigate({
+      pathname: `/post/${post._id}`,
+      state: post,
+    });
   };
 
   return (
@@ -25,7 +30,7 @@ const Post = ({ posts }) => {
               )}
 
               <Link to={`/post/${post._id}`}>
-                <button onClick={handleClick}>
+                <button onClick={() => handleClick(post)}>
                   <h4 className="titleEllipsis mt-2 font-josefin text-[24px] font-bold cursor-pointer text-[#bcbe0c]">
                     {post.title}
                   </h4>

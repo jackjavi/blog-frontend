@@ -15,15 +15,10 @@ const SinglePost = () => {
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [updateMode, setUpdateMode] = React.useState(false);
-  const [postId, setPostId] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const posts = useSelector((state) => state.posts);
 
-  const reduxpost = posts.map((p) => {
-    return p;
-  });
-
-  console.log(reduxpost);
+  const reduxpost = posts.find((post) => post._id === path);
 
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -31,16 +26,11 @@ const SinglePost = () => {
   }, []);
 
   React.useEffect(() => {
-    const postId = JSON.parse(localStorage.getItem("post"))._id;
-    setPostId(postId);
-  }, [postId]);
-
-  React.useEffect(() => {
     const getPost = async () => {
       try {
-        if (postId) {
+        if (path) {
           const res = await axios.get(
-            `https://trending-trends.onrender.com/api/v1/posts/${postId}`
+            `https://trending-trends.onrender.com/api/v1/posts/${path}`
           );
           setPost(res.data);
           setTitle(res.data.title);
@@ -54,7 +44,7 @@ const SinglePost = () => {
     };
 
     getPost();
-  }, [postId]);
+  }, [path]);
 
   if (loading) {
     return <Loading />;
@@ -101,10 +91,10 @@ const SinglePost = () => {
   return (
     <div className="scrollbar scrollbar-hide flex-[12] flex justify-center pt-4 h-screen overflow-auto">
       <div className="flex flex-col items-center">
-        {post.photo && (
+        {reduxpost.photo && (
           <img
             className="rounded-md h-[300px] w-full object-cover"
-            src={post.photo}
+            src={reduxpost.photo}
             alt=""
           />
         )}
@@ -120,10 +110,10 @@ const SinglePost = () => {
         ) : (
           <div className="flex w-[100%] mt-2">
             <h4 className=" flex-[9] text-center font-lora text-[20px] font-bold cursor-pointer ">
-              {post.title}
+              {reduxpost.title}
             </h4>
 
-            {post.username === user?.username && (
+            {reduxpost.username === user?.username && (
               <p className="float-right mr-1">
                 <span className="mr-2">
                   <EditIcon
@@ -147,12 +137,14 @@ const SinglePost = () => {
         )}
 
         <p className="flex py-4 items-center text-[16px] font-valera justify-between text-[#b39656]">
-          <Link to={`/?user=${post.username}`}>
+          <Link to={`/?user=${reduxpost.username}`}>
             <span>
-              Author: <b>{post.username}</b>
+              Author: <b>{reduxpost.username}</b>
             </span>
           </Link>
-          <span className="  ">{new Date(post.createdAt).toDateString()}</span>
+          <span className="  ">
+            {new Date(reduxpost.createdAt).toDateString()}
+          </span>
         </p>
 
         {updateMode ? (
@@ -171,7 +163,7 @@ const SinglePost = () => {
           </div>
         ) : (
           <p className=" font-lora text-[16px] w-[90%] md:w-[60%] leading-8 text-[#666] first-letter:text-[30px] first-letter:ml-[20px] first-letter:font-semibold">
-            {post.desc}
+            {reduxpost.desc}
           </p>
         )}
       </div>

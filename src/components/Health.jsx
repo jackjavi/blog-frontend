@@ -7,49 +7,51 @@ const Health = ({ posts }) => {
   };
 
   return (
-    <div className="my-4">
-      <h2 className="text-3xl font-bold text-gray-800 mb-4">Entertainment</h2>
-      {posts.map((post) => {
-        return (
-          <div
-            key={post._id}
-            className="bg-white shadow rounded-lg overflow-hidden"
-          >
-            <div className="w-full h-64 relative overflow-hidden">
-              {post.photo && (
-                <img
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                  src={post.photo}
-                  alt="postpoto"
-                />
-              )}
-            </div>
-            <Link to={`/post/${post._id}`}>
-              <button
-                onClick={handleClick}
-                className="relative block w-full px-6 py-4 text-left font-semibold text-xl text-gray-800 leading-tight focus:outline-none focus:shadow-outline-purple"
-              >
-                {post.title}
-              </button>
-            </Link>
-            <div className="px-6 py-4">
-              <div className="flex items-center justify-between">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div>
+        {posts.map((post) => {
+          return (
+            <div
+              key={post._id}
+              className="mt-4 border  shadow p-4 w-full  rounded"
+            >
+              <div>
+                {post.photo && (
+                  <img
+                    className="rounded-md h-[150px] md:h-[150px] object-cover w-[100%]"
+                    src={post.photo}
+                    alt="postpoto"
+                  />
+                )}
+
+                <Link to={`/post/${post._id}`}>
+                  <button onClick={handleClick}>
+                    <h4 className="titleEllipsis mt-2 font-josefin text-[24px] font-bold cursor-pointer text-[#bcbe0c]">
+                      {post.title}
+                    </h4>
+                  </button>
+                </Link>
+
                 <Link to={`/?cat=${post.cat}`}>
-                  <div className="text-sm font-semibold text-purple-600 uppercase tracking-wide">
-                    {post.cat}
+                  <div className="flex  items-center justify-between w-full">
+                    <p className="mt-2 text-[#999] font-lora italic text-[14px] cursor-pointer">
+                      {post.cat}
+                    </p>
+
+                    <p className="mt-2 text-[#999] font-lora italic text-[13px]">
+                      {new Date(post.createdAt).toDateString()}
+                    </p>
                   </div>
                 </Link>
-                <div className="text-sm text-gray-600">
-                  {new Date(post.createdAt).toDateString()}
-                </div>
-              </div>
-              <div className="mt-2 text-gray-800 leading-relaxed">
-                {post.desc}
+
+                <p className="descEllipsis mt-2 overflow-hidden font-valera text-[14px] leading-6 text-[#444]">
+                  {post.desc}
+                </p>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

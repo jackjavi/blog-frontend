@@ -4,7 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import "../index.css";
-import LoadingIndicator from "./LoadingIndicator";
+import Loading from "./Loading";
 
 const SinglePost = () => {
   const location = useLocation();
@@ -49,7 +49,7 @@ const SinglePost = () => {
   }, [postId]);
 
   if (loading) {
-    return <LoadingIndicator />;
+    return <Loading />;
   }
 
   //const PF = "http://localhost:5000/api/v1/images/";

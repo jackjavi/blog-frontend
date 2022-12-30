@@ -7,7 +7,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import "../index.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import LoadingIndicator from "../components/LoadingIndicator";
+import Loading from "./Loading";
 
 const Sidebar = () => {
   const [cats, setCats] = React.useState([]);
@@ -56,7 +56,7 @@ const Sidebar = () => {
     //}, 1000);
   };
   if (loading) {
-    return <LoadingIndicator />;
+    return <Loading />;
   }
 
   let post;

@@ -5,7 +5,7 @@ import Posts from "../components/Posts";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
-import LoadingIndicator from "../components/LoadingIndicator";
+import Loading from "../components/Loading";
 
 const Home = () => {
   const [posts, setPosts] = React.useState([]);
@@ -30,7 +30,7 @@ const Home = () => {
   }, [search]);
 
   if (loading) {
-    return <LoadingIndicator />;
+    return <Loading />;
   }
 
   return (

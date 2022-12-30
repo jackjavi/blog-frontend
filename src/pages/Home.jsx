@@ -34,7 +34,7 @@ const Home = () => {
   }
 
   return (
-    <div className="w-full bg-gray-200">
+    <div className="w-full ">
       <div className="">
         <NavBar />
         <Header />

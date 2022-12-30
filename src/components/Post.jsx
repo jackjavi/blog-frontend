@@ -3,13 +3,6 @@ import "../index.css";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
-  const categories = [
-    "Technology",
-    "Sports",
-    "Entertainment",
-    "Masculinity",
-    "Health",
-  ];
   //const PF = "https://trending-trends.herokuapp.com/images/";
   const handleClick = () => {
     localStorage.setItem("post", JSON.stringify(post));
@@ -38,16 +31,11 @@ const Post = ({ post }) => {
         </Link>
 
         <div className="flex  items-center justify-between w-full">
-          {categories.map((c) => {
-            return (
-              <p
-                key={c}
-                className="mt-2 text-[#999] font-lora italic text-[14px]"
-              >
-                {c}
-              </p>
-            );
-          })}
+          <Link>
+            <p className="mt-2 text-[#999] font-lora italic text-[14px] cursor-pointer">
+              {post.cat}
+            </p>
+          </Link>
 
           <p className="mt-2 text-[#999] font-lora italic text-[13px]">
             {new Date(post.createdAt).toDateString()}

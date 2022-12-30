@@ -10,20 +10,17 @@ import { Link } from "react-router-dom";
 import Loading from "./Loading";
 
 const Sidebar = () => {
-  const [cats, setCats] = React.useState([]);
   const [posts, setPosts] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   //const [singlePost, setSinglePost] = React.useState(null);
 
-  React.useEffect(() => {
-    const getPosts = async () => {
-      const res = await axios.get(
-        "https://trending-trends.onrender.com/api/v1/categories"
-      );
-      setCats(res.data);
-    };
-    getPosts();
-  }, []);
+  const categories = [
+    "Technology",
+    "Sports",
+    "Entertainment",
+    "Masculinity",
+    "Health",
+  ];
 
   React.useEffect(() => {
     try {
@@ -108,14 +105,14 @@ const Sidebar = () => {
           CATEGORIES
         </h4>
         <ul className="pt-2 grid grid-cols-2 gap-4 w-full text-[12px] font-lora font-medium">
-          {cats.map((c) => {
+          {categories.map((c) => {
             return (
-              <Link key={c.name} to={`/?cat=${c.name}`}>
+              <Link key={c} to={`/?cat=${c}`}>
                 <li
-                  key={c.name}
+                  key={c}
                   className="ml-[25%] hover:text-[lightcoral] cursor-pointer"
                 >
-                  {c.name}
+                  {c}
                 </li>
               </Link>
             );

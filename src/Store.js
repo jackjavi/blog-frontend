@@ -4,11 +4,17 @@ import thunk from "redux-thunk";
 // Define the initial state of the store
 const initialState = {
   posts: [],
+  loading: false,
 };
 
 // Define the reducer to handle actions
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case "LOADING_POSTS":
+      return {
+        ...state,
+        loading: true,
+      };
     case "FETCH_POSTS":
       return {
         ...state,

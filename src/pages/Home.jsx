@@ -11,8 +11,9 @@ import { fetchPosts } from "../action";
 
 const Home = () => {
   const [posts, setPosts] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
   const { search } = useLocation();
+
+  const loading = useSelector((state) => state.loading); // get loading state from store
   const myreduxposts = useSelector((state) => state.posts);
 
   const dispatch = useDispatch();

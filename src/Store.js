@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 
 // Define the initial state of the store
 const initialState = {
-  posts: {},
+  posts: [],
 };
 
 // Define the reducer to handle actions

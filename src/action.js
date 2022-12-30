@@ -6,7 +6,7 @@ export const fetchPosts = () => {
       const res = await axios.get(
         "https://trending-trends.onrender.com/api/v1/posts"
       );
-      const posts = await res.data;
+      const posts = await res.data.reverse();
       dispatch({ type: "FETCH_POSTS", posts });
     } catch (error) {
       console.error(error);

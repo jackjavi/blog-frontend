@@ -6,13 +6,14 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Loading from "../components/Loading";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../action";
 
 const Home = () => {
   const [posts, setPosts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const { search } = useLocation();
+  const myreduxposts = useSelector((state) => state.posts);
 
   const dispatch = useDispatch();
   //const myposts =
@@ -49,7 +50,7 @@ const Home = () => {
       </div>
 
       <div className="flex w-[90vw] m-auto gap-4 mt-6">
-        <Posts posts={posts} />
+        <Posts posts={myreduxposts} />
       </div>
 
       <Footer />

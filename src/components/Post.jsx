@@ -31,11 +31,9 @@ const Post = ({ post }) => {
         </Link>
 
         <div className="flex  items-center justify-between w-full">
-          <Link>
-            <p className="mt-2 text-[#999] font-lora italic text-[14px] cursor-pointer">
-              {post.cat}
-            </p>
-          </Link>
+          <p className="mt-2 text-[#999] font-lora italic text-[14px] cursor-pointer">
+            {post.cat}
+          </p>
 
           <p className="mt-2 text-[#999] font-lora italic text-[13px]">
             {new Date(post.createdAt).toDateString()}

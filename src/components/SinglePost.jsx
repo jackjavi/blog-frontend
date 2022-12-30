@@ -4,7 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import "../index.css";
-import LoadingIndicator from "../components/LoadingIndicator";
+import LoadingIndicator from "./LoadingIndicator";
 
 const SinglePost = () => {
   const location = useLocation();

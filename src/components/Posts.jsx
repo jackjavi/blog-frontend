@@ -5,7 +5,7 @@ const Posts = ({ posts }) => {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {posts.map((p) => {
-        return <Post post={p} />;
+        return <Post key={p._id} post={p} />;
       })}
     </div>
   );

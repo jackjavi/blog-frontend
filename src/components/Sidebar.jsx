@@ -26,13 +26,19 @@ const Sidebar = () => {
   }, []);
 
   React.useEffect(() => {
-    const getPosts = async () => {
-      const res = await axios.get(
-        "https://trending-trends.onrender.com/api/v1/posts"
-      );
-      setPosts(res.data);
-    };
-    getPosts();
+    try {
+      const getPosts = async () => {
+        const res = await axios.get(
+          "https://trending-trends.onrender.com/api/v1/posts"
+        );
+        setPosts(res.data);
+      };
+      getPosts();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   const handleLink = (id) => {
@@ -46,7 +52,6 @@ const Sidebar = () => {
       } catch (error) {
         console.error(error);
       } finally {
-        setLoading(false);
       }
     };
 

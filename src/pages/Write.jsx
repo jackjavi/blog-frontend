@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 const Write = () => {
   const [title, setTitle] = React.useState("");
+  const [cat, setCat] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [file, setFile] = React.useState(null);
   const [user, setUser] = React.useState(null);
@@ -20,6 +21,7 @@ const Write = () => {
     const newPost = {
       username: user.username,
       title,
+      cat,
       desc,
     };
 
@@ -32,7 +34,7 @@ const Write = () => {
       // newPost.photo = filename;
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/v1/upload",
+          "https://trending-trends.onrender.com/api/v1/upload",
           data
         );
 
@@ -43,7 +45,7 @@ const Write = () => {
     }
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/posts",
+        "https://trending-trends.onrender.com/api/v1/posts",
         newPost
       );
       console.log(res.data);
@@ -55,7 +57,7 @@ const Write = () => {
           try {
             if (res.data._id) {
               const resp = await axios.put(
-                `http://localhost:5000/api/v1/posts/${res.data._id}`,
+                `https://trending-trends.onrender.com/api/v1/posts/${res.data._id}`,
                 {
                   username: user.username,
                   title,
@@ -128,6 +130,19 @@ const Write = () => {
               autoFocus={true}
               className="outline-none text-[20px] border-0 p-[20px] w-[70vw]"
             />
+            <select
+              className=""
+              id="cat"
+              name="cats"
+              onChange={(e) => setCat(e.target.value)}
+            >
+              <option value="">--choose category--</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="masculinity">Masculinity</option>
+              <option value="sports">Sports</option>
+              <option value="technology">Technology</option>
+              <option value="health">Health</option>
+            </select>
           </div>
           <div>
             <textarea

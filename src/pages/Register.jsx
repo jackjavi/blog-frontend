@@ -24,7 +24,7 @@ const Register = () => {
     setError(false);
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/v1/register",
+        "https://trending-trends.onrender.com/api/v1/register",
         formData
       );
       res.data && window.location.replace("/login");

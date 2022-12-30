@@ -32,7 +32,7 @@ const Settings = () => {
 
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/v1/upload",
+          "https://trending-trends.onrender.com/api/v1/upload",
           data
         );
         updatedUser.profilePic = res.data;
@@ -43,7 +43,7 @@ const Settings = () => {
     }
     try {
       const res = await axios.put(
-        "http://localhost:5000/api/v1/users/" + user._id,
+        "https://trending-trends.onrender.com/api/v1/users/" + user._id,
         updatedUser
       );
       localStorage.setItem("user", JSON.stringify(res.data));

@@ -3,7 +3,7 @@ import Post from "./Post";
 
 const Posts = ({ posts }) => {
   return (
-    <div className="flex justify-around pb-20 flex-wrap gap-4 flex-1">
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {posts.map((p) => {
         return <Post post={p} />;
       })}

@@ -115,7 +115,7 @@ const SinglePost = () => {
               {post.title}
             </h4>
 
-            {!loading && post.username === user?.username && (
+            {post.username === user?.username && (
               <p className="float-right mr-1">
                 <span className="mr-2">
                   <EditIcon
@@ -144,9 +144,9 @@ const SinglePost = () => {
               Author: <b>{post.username}</b>
             </span>
           </Link>
-
           <span className="  ">{new Date(post.createdAt).toDateString()}</span>
         </p>
+
         {updateMode ? (
           <div className="">
             <textarea

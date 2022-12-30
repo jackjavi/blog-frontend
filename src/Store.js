@@ -19,6 +19,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.posts,
+        loading: false,
       };
     default:
       return state;

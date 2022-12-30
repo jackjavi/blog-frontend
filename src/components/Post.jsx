@@ -3,7 +3,6 @@ import "../index.css";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
-  //const PF = "https://trending-trends.herokuapp.com/images/";
   const handleClick = () => {
     localStorage.setItem("post", JSON.stringify(post));
     console.log(post);
@@ -11,6 +10,7 @@ const Post = ({ post }) => {
   if (post.photo === null) {
     return <p>Loading...</p>;
   }
+
   return (
     <div className="mt-4 border  shadow p-4 w-full  rounded">
       <div>

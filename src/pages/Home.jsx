@@ -6,7 +6,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Loading from "../components/Loading";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchPosts } from "../action";
 
 const Home = () => {
@@ -16,7 +16,6 @@ const Home = () => {
 
   const dispatch = useDispatch();
   //const myposts =
-  useSelector((state) => state.posts);
 
   React.useEffect(() => {
     dispatch(fetchPosts());

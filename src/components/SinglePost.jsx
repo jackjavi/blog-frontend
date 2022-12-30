@@ -5,6 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import "../index.css";
 import Loading from "./Loading";
+import { useSelector } from "react-redux";
 
 const SinglePost = () => {
   const location = useLocation();
@@ -16,6 +17,13 @@ const SinglePost = () => {
   const [updateMode, setUpdateMode] = React.useState(false);
   const [postId, setPostId] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
+  const posts = useSelector((state) => state.posts);
+
+  const reduxpost = posts.map((p) => {
+    return p;
+  });
+
+  console.log(reduxpost);
 
   React.useEffect(() => {
     let user = JSON.parse(localStorage.getItem("user"));

@@ -21,7 +21,7 @@ const NavBar = () => {
   //const PF = "https://trending-trends.herokuapp.com/images/";
 
   return (
-    <div className="z-10 flex items-center w-full h-20 drop-shadow md:drop-shadow-none  px-4 text-[#444] font-[900] bg-white fixed">
+    <div className="z-10 flex items-center w-full h-20 drop-shadow md:drop-shadow-none  px-4 text-[#444] font-[900] bg-gray-200 fixed">
       <div className="flex-[3] flex items-center justify-center gap-3 text-[#444] ">
         <FacebookOutlinedIcon
           sx={{ color: "#1877f2" }}

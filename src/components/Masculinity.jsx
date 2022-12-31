@@ -7,8 +7,9 @@ const Masculinity = ({ posts }) => {
   };
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div>
+    <div>
+      <h2 className="text-3xl font-bold text-gray-800 mb-4">Masculinity</h2>
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {posts.map((post) => {
           return (
             <div

@@ -48,15 +48,15 @@ const Home = () => {
         <Header />
       </div>
 
-      <div className="flex w-[90vw] m-auto gap-4 mt-6">
+      <div className="flex flex-col w-[90vw] m-auto gap-4 mt-6">
         <Posts posts={myreduxposts} />
+        <Sports posts={sportsPosts} />
+        <Entertainment posts={entertainmentPosts} />
+        <Health posts={healthPosts} />
+        <Technology posts={technologyPosts} />
+        <Masculinity posts={masculinityPosts} />
       </div>
 
-      <Entertainment posts={entertainmentPosts} />
-      <Health posts={healthPosts} />
-      <Technology posts={technologyPosts} />
-      <Masculinity posts={masculinityPosts} />
-      <Sports posts={sportsPosts} />
       <Footer />
     </div>
   );

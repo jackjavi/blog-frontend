@@ -6,13 +6,15 @@ const Technology = ({ posts }) => {
     localStorage.setItem("post", JSON.stringify(posts));
   };
 
+  let arr = [];
   const rpost = posts.map((p) => {
-    return p;
+    arr.push(p);
+    return arr;
   });
 
   return (
     <div>
-      {rpost && (
+      {rpost.length && (
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Technology</h2>
       )}
 

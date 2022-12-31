@@ -6,9 +6,17 @@ const Masculinity = ({ posts }) => {
     localStorage.setItem("post", JSON.stringify(posts));
   };
 
+  let arr = [];
+  const rpost = posts.map((p) => {
+    arr.push(p);
+    return arr;
+  });
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-800 mb-4">Masculinity</h2>
+      {rpost.length && (
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Masculinity</h2>
+      )}
+
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {posts.map((post) => {
           return (

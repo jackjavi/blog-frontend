@@ -11,6 +11,7 @@ import Health from "../components/Health";
 import Technology from "../components/Technology";
 import Masculinity from "../components/Masculinity";
 import Sports from "../components/Sports";
+import Politics from "../components/Politics";
 
 const Home = () => {
   const loading = useSelector((state) => state.loading); // get loading state from store
@@ -31,6 +32,9 @@ const Home = () => {
   );
   const sportsPosts = myreduxposts.filter(
     (post) => post.categories === "sports"
+  );
+  const politicsPosts = myreduxposts.filter(
+    (post) => post.categories === "politics"
   );
 
   const dispatch = useDispatch();
@@ -59,6 +63,7 @@ const Home = () => {
         <Health posts={healthPosts} />
         <Technology posts={technologyPosts} />
         <Masculinity posts={masculinityPosts} />
+        <Politics posts={politicsPosts} />
       </div>
 
       <Footer />

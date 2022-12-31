@@ -6,11 +6,18 @@ const Health = ({ posts }) => {
     localStorage.setItem("post", JSON.stringify(posts));
   };
 
+  const rpost = posts.map((p) => {
+    return p;
+  });
+
   return (
     <div>
-      <h2 className="text-3xl font-bold text-gray-800 mb-4">
-        Health & Lifestyle
-      </h2>
+      {rpost && (
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          Health & Lifestyle
+        </h2>
+      )}
+
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {posts.map((post) => {
           return (
@@ -38,7 +45,7 @@ const Health = ({ posts }) => {
                 <Link to={`/?cat=${post.cat}`}>
                   <div className="flex  items-center justify-between w-full">
                     <p className="mt-2 text-[#999] font-lora italic text-[14px] cursor-pointer">
-                      {post.cat}
+                      {post.categories}
                     </p>
 
                     <p className="mt-2 text-[#999] font-lora italic text-[13px]">

@@ -18,16 +18,20 @@ const Home = () => {
 
   // filter posts by category
   const entertainmentPosts = myreduxposts.filter(
-    (post) => post.cat === "entertainment"
+    (post) => post.categories === "entertainment"
   );
-  const healthPosts = myreduxposts.filter((post) => post.cat === "health");
+  const healthPosts = myreduxposts.filter(
+    (post) => post.categories === "health"
+  );
   const technologyPosts = myreduxposts.filter(
-    (post) => post.cat === "technology"
+    (post) => post.categories === "technology"
   );
   const masculinityPosts = myreduxposts.filter(
-    (post) => post.cat === "masculinity"
+    (post) => post.categories === "masculinity"
   );
-  const sportsPosts = myreduxposts.filter((post) => post.cat === "sports");
+  const sportsPosts = myreduxposts.filter(
+    (post) => post.categories === "sports"
+  );
 
   const dispatch = useDispatch();
   //const myposts =
@@ -48,7 +52,7 @@ const Home = () => {
         <Header />
       </div>
 
-      <div className="flex flex-col w-[90vw] m-auto gap-4 mt-6">
+      <div className="flex flex-col w-[90vw] m-auto gap-4 pt-8 pb-8">
         <Posts posts={myreduxposts} />
         <Sports posts={sportsPosts} />
         <Entertainment posts={entertainmentPosts} />

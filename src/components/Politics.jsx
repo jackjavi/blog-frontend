@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Technology = ({ posts }) => {
+const Politics = ({ posts }) => {
   const handleClick = () => {
     localStorage.setItem("post", JSON.stringify(posts));
   };
@@ -13,7 +13,7 @@ const Technology = ({ posts }) => {
   return (
     <div>
       {rpost && (
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Technology</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Politics</h2>
       )}
 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -64,4 +64,4 @@ const Technology = ({ posts }) => {
   );
 };
 
-export default Technology;
+export default Politics;

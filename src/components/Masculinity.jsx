@@ -36,7 +36,7 @@ const Masculinity = ({ posts }) => {
                 <Link to={`/?cat=${post.cat}`}>
                   <div className="flex  items-center justify-between w-full">
                     <p className="mt-2 text-[#999] font-lora italic text-[14px] cursor-pointer">
-                      {post.cat}
+                      {post.categories}
                     </p>
 
                     <p className="mt-2 text-[#999] font-lora italic text-[13px]">
